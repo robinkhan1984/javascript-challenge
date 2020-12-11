@@ -24,8 +24,8 @@ var form = d3.select("#form");
 button.on("click", aliens);
 form.on("submit", aliens);
 
-// function 
-function alien() {
+// function to filter table
+function aliens() {
 
     // keep the page from refreshing when hitting the filter button 
     d3.event.preventDefault();
@@ -36,16 +36,22 @@ function alien() {
     //retrieve value from input box on webpage  
     var inputValue = inputElement.property("value")
 
-    //
-    var filteredData = tabletData.filter()
+    //taking data from input box and input date and filtering the table 
+    var filteredData = tableData.filter(data => data.datetime === inputValue);
 
+    //keeps the non filtered data from showing up on the page
+    tbody.html("");
 
+    //restart the filter
+    filteredData.forEach(function(aliens)  {
+        var row = tbody.append("tr");
+        Object.entries(aliens).forEach(function([key, value]) {
+          var cell = row.append("td");
+          cell.text(value);
+        });
+    });
 
-
-
-
-
-}
+};
 
 
 
