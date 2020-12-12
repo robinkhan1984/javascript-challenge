@@ -6,12 +6,18 @@ var tbody = d3.select("tbody");
 
 // loop in the values in the data file 
 data.forEach(function(aliens)  {
+    
     var row = tbody.append("tr");
     Object.entries(aliens).forEach(function([key, value]) {
       var cell = row.append("td");
       cell.text(value);
     });
 });
+
+
+
+// makeTable(tableData);
+
 
 
 // set up filter button 
@@ -46,7 +52,7 @@ function aliens() {
 
     //taking data from input box and input date and filtering the table 
     var filteredData1 = tableData.filter(data => data.datetime === inputValue1);
-    var filteredData2 = tableData.filter(data => data.city === inputValue2);
+    var filteredData2 = filteredData1.filter(data => data.city === inputValue2);
     // var filteredData3 = tableData.filter(data => data.state === inputValue3);
     // var filteredData4 = tableData.filter(data => data.country === inputValue4);
     // var filteredData5 = tableData.filter(data => data.shape === inputValue5);
@@ -69,6 +75,7 @@ function aliens() {
         cell.text(value);
         });
     });
+    
     console.log();
 };
 
